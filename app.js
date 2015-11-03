@@ -1,4 +1,5 @@
 var pikePlace = {
+  locName: "pikePlace",
   minCust: 17,
   maxCust: 88,
   avgPurch: 5.2,
@@ -23,25 +24,37 @@ var pikePlace = {
     }
   },
 
-  displayTotals: function() {
-  for (var i=0; i<8;i++) {
-    var results = document.createElement('ul');
-    var timeTotal = document.createElement('li');
+//   displayTotals: function() {
+//   for (var i=0; i<8;i++) {
+//     var timeTotal = document.createElement('li');
 
-    timeTotal.innerHTML = this.hour[i] + this.hourTotal[i];
-    document.body.appendChild(timeTotal);
+//     timeTotal.innerHTML = this.hour[i] + this.hourTotal[i];
+//     document.body.appendChild(timeTotal);
+//     }
+//   var finalTotal = document.createElement('li')
+//   finalTotal.innerHTML = "Total: " + this.dailyTotal;
+//   document.body.appendChild(finalTotal);
+//   }
+// };
+
+  showTotals: function (){
+    for (var i=0; i<8;i++) {
+      var position = document.getElementById(this.locName);
+      var timeTotal = document.createElement('li');
+
+      timeTotal.innerHTML = this.hour[i] + this.hourTotal[i];
+      position.appendChild(timeTotal);
     }
-
-  var finalTotal = document.createElement('li')
+  finalTotal = document.createElement('li');
   finalTotal.innerHTML = "Total: " + this.dailyTotal;
-  document.body.appendChild(finalTotal);
-
+  position.appendChild(finalTotal);
   }
 };
 
 pikePlace.calcHourly();
 pikePlace.calcDaily();
-pikePlace.displayTotals();
+// pikePlace.displayTotals();
+pikePlace.showTotals();
 
 
 
