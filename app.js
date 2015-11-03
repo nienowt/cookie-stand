@@ -1,11 +1,12 @@
+var hour = ["10:00am: ","11:00am: ","12:00pm: ","1:00pm: ","2:00pm: ","3:00pm: ","4:00pm: ","5:00pm: "];
+
 var pikePlace = {
-  locName: "pikePlace",
+  domID: "pikePlace",
   minCust: 17,
   maxCust: 88,
   avgPurch: 5.2,
   hourTotal: [],
   dailyTotal: 0,
-  hour: ["10:00am: ","11:00am: ","12:00pm: ","1:00pm: ","2:00pm: ","3:00pm: ","4:00pm: ","5:00pm: "],
 
   generateRandom: function(min, max) {
     return Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
@@ -15,21 +16,15 @@ var pikePlace = {
     for (var i=0; i<8; i++) {
     var hourly = Math.floor(this.generateRandom() * this.avgPurch);
       this.hourTotal.push(hourly);
-    }
-  },
-
-  calcDaily: function(){
-    for (var i=0; i<8; i++) {
       this.dailyTotal += this.hourTotal[i];
     }
   },
 
   showTotals: function (){
     for (var i=0; i<8;i++) {
-      var position = document.getElementById(this.locName);
+      var position = document.getElementById(this.domID);
       var timeTotal = document.createElement('li');
-
-      timeTotal.innerHTML = this.hour[i] + this.hourTotal[i];
+      timeTotal.innerHTML = hour[i] + this.hourTotal[i];
       position.appendChild(timeTotal);
     }
   finalTotal = document.createElement('li');
@@ -202,7 +197,7 @@ var alki = {
 };
 
 pikePlace.calcHourly();
-pikePlace.calcDaily();
+// pikePlace.calcDaily();
 pikePlace.showTotals();
 
 seaTac.calcHourly();
