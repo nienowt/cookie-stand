@@ -1,4 +1,4 @@
-var hour = ["10:00am ","11:00am ","12:00pm ","1:00pm ","2:00pm ","3:00pm ","4:00pm ","5:00pm "];
+var hour = [" ","10:00am ","11:00am ","12:00pm ","1:00pm ","2:00pm ","3:00pm ","4:00pm ","5:00pm ", "Total"];
 
 
 
@@ -35,17 +35,17 @@ var allCookieStands = [pike, seaTac, southCenter, bellSquare, alki];
 function displayTable() {
   var tbl = document.createElement('table');
   var headerRow = document.createElement('tr');
-  var emptyTh = document.createElement('th');
-  headerRow.appendChild(emptyTh);
+  // var emptyTh = document.createElement('th');
+  // headerRow.appendChild(emptyTh);
 
     for (i = 0; i < hour.length; i++) {
       var thElement = document.createElement('th');
       thElement.textContent = hour[i];
       headerRow.appendChild(thElement);
     }
-  var results = document.createElement('th');
-  results.textContent = "Total";
-  headerRow.appendChild(results);
+  // var results = document.createElement('th');
+  // results.textContent = "Total";
+  // headerRow.appendChild(results);
   tbl.appendChild(headerRow);
 
   for (i = 0; i < allCookieStands.length; i++) {
@@ -56,20 +56,17 @@ function displayTable() {
     trElement.appendChild(tdElement);
     tbl.appendChild(trElement);
 
-      for  (j = 0; j < hour.length; j++) {
+      for  (j = 0; j < hour.length-2; j++) {
       var tdElement2 = document.createElement('td');
       tdElement2.textContent = allCookieStands[i].hourTotal[j];
       trElement.appendChild(tdElement2);
     }
 
-    var resultsTd = document.createElement('td');
-    resultsTd.textContent = allCookieStands[i].dailyTotal;
-    trElement.appendChild(resultsTd);
+  var resultsTd = document.createElement('td');
+  resultsTd.textContent = allCookieStands[i].dailyTotal;
+  trElement.appendChild(resultsTd);
   }
 document.getElementById("table").appendChild(tbl);
 }
-
-
-
 
 displayTable();
