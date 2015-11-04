@@ -1,6 +1,5 @@
 var hour = [" ","10:00am ","11:00am ","12:00pm ","1:00pm ","2:00pm ","3:00pm ","4:00pm ","5:00pm ", "Total"];
-
-
+var allCookieStands = [];
 
 function CookieStand(loc, minCust, maxCust, avgPurch) {
   this.loc = loc;
@@ -9,13 +8,14 @@ function CookieStand(loc, minCust, maxCust, avgPurch) {
   this.avgPurch = avgPurch;
   this.hourTotal = [];
   this.dailyTotal = 0;
+  allCookieStands.push(this);
 
   this.generateRandom = function(min, max) {
     return Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
   };
 
   this.calcHourly = function() {
-    for (var i=0; i<8; i++) {
+    for (var i=0; i<hour.length-2; i++) {
     var hourly = Math.floor(this.generateRandom() * this.avgPurch);
       this.hourTotal.push(hourly);
       this.dailyTotal += this.hourTotal[i];
@@ -23,14 +23,11 @@ function CookieStand(loc, minCust, maxCust, avgPurch) {
   };
 }
 
-
 var pike = new CookieStand('Pike Place', 17,88,5.2);
 var seaTac = new CookieStand('SeaTac', 6,44,1.2);
 var southCenter = new CookieStand('South Center', 11,38,1.9);
 var bellSquare = new CookieStand('Bellevue Square', 20,48,3.3);
 var alki = new CookieStand('Alki', 3,24,2.6);
-var allCookieStands = [pike, seaTac, southCenter, bellSquare, alki];
-
 
 function displayTable() {
   var tbl = document.createElement('table');
