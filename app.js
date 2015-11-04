@@ -15,7 +15,7 @@ function CookieStand(loc, minCust, maxCust, avgPurch) {
   };
 
   this.calcHourly = function() {
-    for (var i=0; i<hour.length-2; i++) {
+    for (var i=0; i<hour.length-2; i++) {  //-2 accounts for extra values in hour array, empty cell and total
     var hourly = Math.floor(this.generateRandom() * this.avgPurch);
       this.hourTotal.push(hourly);
       this.dailyTotal += this.hourTotal[i];
@@ -32,18 +32,13 @@ var alki = new CookieStand('Alki', 3,24,2.6);
 function displayTable() {
   var tbl = document.createElement('table');
   var headerRow = document.createElement('tr');
-  // var emptyTh = document.createElement('th');
-  // headerRow.appendChild(emptyTh);
 
     for (i = 0; i < hour.length; i++) {
       var thElement = document.createElement('th');
       thElement.textContent = hour[i];
       headerRow.appendChild(thElement);
     }
-  // var results = document.createElement('th');
-  // results.textContent = "Total";
-  // headerRow.appendChild(results);
-  tbl.appendChild(headerRow);
+     tbl.appendChild(headerRow);
 
   for (i = 0; i < allCookieStands.length; i++) {
     allCookieStands[i].calcHourly();
@@ -66,4 +61,32 @@ function displayTable() {
 document.getElementById("table").appendChild(tbl);
 }
 
-displayTable();
+// displayTable();
+
+
+
+var subForm = document.getElementById("submission-form")
+
+// var addedLocation = function() {
+
+
+
+var handleSub = function(event) {
+  event.preventDefault();
+
+    if ((!event.target.storeLoc.value) || (!event.target.min.value) || (!event.target.max.value) || (!event.target.avgCookie.value)) {
+      return alert('Fill those fields fool!');
+    }
+
+    var place = event.target.storeLoc.value;
+    var minimum = event.target.min.value;
+    var maximum = event.target.max.value;
+    var cookies = event.target.avgCookie.value;
+    var addLocation = new CookieStand(place,minimum,maximum,cookies);
+
+    allCookieStands.push(addLocation);
+    displayTable();
+};
+
+subForm.addEventListener('submit', handleSub);
+
