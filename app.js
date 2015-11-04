@@ -1,218 +1,69 @@
-var hour = ["10:00am: ","11:00am: ","12:00pm: ","1:00pm: ","2:00pm: ","3:00pm: ","4:00pm: ","5:00pm: "];
+var hour = [" ","10:00am ","11:00am ","12:00pm ","1:00pm ","2:00pm ","3:00pm ","4:00pm ","5:00pm ", "Total"];
+var allCookieStands = [];
 
-var pikePlace = {
-  domID: "pikePlace",
-  minCust: 17,
-  maxCust: 88,
-  avgPurch: 5.2,
-  hourTotal: [],
-  dailyTotal: 0,
+function CookieStand(loc, minCust, maxCust, avgPurch) {
+  this.loc = loc;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgPurch = avgPurch;
+  this.hourTotal = [];
+  this.dailyTotal = 0;
+  allCookieStands.push(this);
 
-  generateRandom: function(min, max) {
+  this.generateRandom = function(min, max) {
     return Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
-  },
+  };
 
-  calcHourly: function() {
-    for (var i=0; i<8; i++) {
+  this.calcHourly = function() {
+    for (var i=0; i<hour.length-2; i++) {
     var hourly = Math.floor(this.generateRandom() * this.avgPurch);
       this.hourTotal.push(hourly);
       this.dailyTotal += this.hourTotal[i];
     }
-  },
+  };
+}
 
-  showTotals: function (){
-    for (var i=0; i<8;i++) {
-      var position = document.getElementById(this.domID);
-      var timeTotal = document.createElement('li');
-      timeTotal.innerHTML = hour[i] + this.hourTotal[i];
-      position.appendChild(timeTotal);
+var pike = new CookieStand('Pike Place', 17,88,5.2);
+var seaTac = new CookieStand('SeaTac', 6,44,1.2);
+var southCenter = new CookieStand('South Center', 11,38,1.9);
+var bellSquare = new CookieStand('Bellevue Square', 20,48,3.3);
+var alki = new CookieStand('Alki', 3,24,2.6);
+
+function displayTable() {
+  var tbl = document.createElement('table');
+  var headerRow = document.createElement('tr');
+  // var emptyTh = document.createElement('th');
+  // headerRow.appendChild(emptyTh);
+
+    for (i = 0; i < hour.length; i++) {
+      var thElement = document.createElement('th');
+      thElement.textContent = hour[i];
+      headerRow.appendChild(thElement);
     }
-  finalTotal = document.createElement('li');
-  finalTotal.innerHTML = "Total: " + this.dailyTotal;
-  position.appendChild(finalTotal);
+  // var results = document.createElement('th');
+  // results.textContent = "Total";
+  // headerRow.appendChild(results);
+  tbl.appendChild(headerRow);
+
+  for (i = 0; i < allCookieStands.length; i++) {
+    allCookieStands[i].calcHourly();
+    var trElement = document.createElement("tr");
+    var tdElement = document.createElement("td");
+    tdElement.textContent = allCookieStands[i].loc;
+    trElement.appendChild(tdElement);
+    tbl.appendChild(trElement);
+
+      for  (j = 0; j < hour.length-2; j++) {
+      var tdElement2 = document.createElement('td');
+      tdElement2.textContent = allCookieStands[i].hourTotal[j];
+      trElement.appendChild(tdElement2);
+    }
+
+  var resultsTd = document.createElement('td');
+  resultsTd.textContent = allCookieStands[i].dailyTotal;
+  trElement.appendChild(resultsTd);
   }
-};
+document.getElementById("table").appendChild(tbl);
+}
 
-//new object
-
-var seaTac = {
-  locName: "seaTac",
-  minCust: 6,
-  maxCust: 44,
-  avgPurch: 1.2,
-  hourTotal: [],
-  dailyTotal: 0,
-  hour: ["10:00am: ","11:00am: ","12:00pm: ","1:00pm: ","2:00pm: ","3:00pm: ","4:00pm: ","5:00pm: "],
-
-  generateRandom: function(min, max) {
-    return Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
-  },
-
-  calcHourly: function() {
-    for (var i=0; i<8; i++) {
-    var hourly = Math.floor(this.generateRandom() * this.avgPurch);
-      this.hourTotal.push(hourly);
-    }
-  },
-
-  calcDaily: function(){
-    for (var i=0; i<8; i++) {
-      this.dailyTotal += this.hourTotal[i];
-    }
-  },
-
-
-  showTotals: function (){
-    for (var i=0; i<8;i++) {
-      var position = document.getElementById(this.locName);
-      var timeTotal = document.createElement('li');
-
-      timeTotal.innerHTML = this.hour[i] + this.hourTotal[i];
-      position.appendChild(timeTotal);
-    }
-  finalTotal = document.createElement('li');
-  finalTotal.innerHTML = "Total: " + this.dailyTotal;
-  position.appendChild(finalTotal);
-  }
-};
-
-var southCenter = {
-  locName: "southCenter",
-  minCust: 11,
-  maxCust: 38,
-  avgPurch: 1.9,
-  hourTotal: [],
-  dailyTotal: 0,
-  hour: ["10:00am: ","11:00am: ","12:00pm: ","1:00pm: ","2:00pm: ","3:00pm: ","4:00pm: ","5:00pm: "],
-
-  generateRandom: function(min, max) {
-    return Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
-  },
-
-  calcHourly: function() {
-    for (var i=0; i<8; i++) {
-    var hourly = Math.floor(this.generateRandom() * this.avgPurch);
-      this.hourTotal.push(hourly);
-    }
-  },
-
-  calcDaily: function(){
-    for (var i=0; i<8; i++) {
-      this.dailyTotal += this.hourTotal[i];
-    }
-  },
-
-  showTotals: function (){
-    for (var i=0; i<8;i++) {
-      var position = document.getElementById(this.locName);
-      var timeTotal = document.createElement('li');
-
-      timeTotal.innerHTML = this.hour[i] + this.hourTotal[i];
-      position.appendChild(timeTotal);
-    }
-  finalTotal = document.createElement('li');
-  finalTotal.innerHTML = "Total: " + this.dailyTotal;
-  position.appendChild(finalTotal);
-  }
-};
-
-var bellSquare = {
-  locName: "bellSquare",
-  minCust: 20,
-  maxCust: 48,
-  avgPurch: 3.3,
-  hourTotal: [],
-  dailyTotal: 0,
-  hour: ["10:00am: ","11:00am: ","12:00pm: ","1:00pm: ","2:00pm: ","3:00pm: ","4:00pm: ","5:00pm: "],
-
-  generateRandom: function(min, max) {
-    return Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
-  },
-
-  calcHourly: function() {
-    for (var i=0; i<8; i++) {
-    var hourly = Math.floor(this.generateRandom() * this.avgPurch);
-      this.hourTotal.push(hourly);
-    }
-  },
-
-  calcDaily: function(){
-    for (var i=0; i<8; i++) {
-      this.dailyTotal += this.hourTotal[i];
-    }
-  },
-
-  showTotals: function (){
-    for (var i=0; i<8;i++) {
-      var position = document.getElementById(this.locName);
-      var timeTotal = document.createElement('li');
-
-      timeTotal.innerHTML = this.hour[i] + this.hourTotal[i];
-      position.appendChild(timeTotal);
-    }
-  finalTotal = document.createElement('li');
-  finalTotal.innerHTML = "Total: " + this.dailyTotal;
-  position.appendChild(finalTotal);
-  }
-};
-
-var alki = {
-  locName: "alki",
-  minCust: 3,
-  maxCust: 24,
-  avgPurch: 2.6,
-  hourTotal: [],
-  dailyTotal: 0,
-  hour: ["10:00am: ","11:00am: ","12:00pm: ","1:00pm: ","2:00pm: ","3:00pm: ","4:00pm: ","5:00pm: "],
-
-  generateRandom: function(min, max) {
-    return Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
-  },
-
-  calcHourly: function() {
-    for (var i=0; i<8; i++) {
-    var hourly = Math.floor(this.generateRandom() * this.avgPurch);
-      this.hourTotal.push(hourly);
-    }
-  },
-
-  calcDaily: function(){
-    for (var i=0; i<8; i++) {
-      this.dailyTotal += this.hourTotal[i];
-    }
-  },
-
-  showTotals: function (){
-    for (var i=0; i<8;i++) {
-      var position = document.getElementById(this.locName);
-      var timeTotal = document.createElement('li');
-
-      timeTotal.innerHTML = this.hour[i] + this.hourTotal[i];
-      position.appendChild(timeTotal);
-    }
-  finalTotal = document.createElement('li');
-  finalTotal.innerHTML = "Total: " + this.dailyTotal;
-  position.appendChild(finalTotal);
-  }
-};
-
-pikePlace.calcHourly();
-// pikePlace.calcDaily();
-pikePlace.showTotals();
-
-seaTac.calcHourly();
-seaTac.calcDaily();
-seaTac.showTotals();
-
-southCenter.calcHourly();
-southCenter.calcDaily();
-southCenter.showTotals();
-
-
-bellSquare.calcHourly();
-bellSquare.calcDaily();
-bellSquare.showTotals();
-
-alki.calcHourly();
-alki.calcDaily();
-alki.showTotals();
+displayTable();
