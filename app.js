@@ -21,14 +21,14 @@ function CookieStand(loc, minCust, maxCust, avgPurch) {
       this.dailyTotal += this.hourTotal[i];
     }
   };
-}
+};
 
 var pike = new CookieStand('Pike Place', 17,88,5.2);
 var seaTac = new CookieStand('SeaTac', 6,44,1.2);
 var southCenter = new CookieStand('South Center', 11,38,1.9);
 var bellSquare = new CookieStand('Bellevue Square', 20,48,3.3);
 var alki = new CookieStand('Alki', 3,24,2.6);
-
+//-----table-------
 function displayTable() {
   var tbl = document.createElement('table');
   var headerRow = document.createElement('tr');
@@ -58,35 +58,46 @@ function displayTable() {
   resultsTd.textContent = allCookieStands[i].dailyTotal;
   trElement.appendChild(resultsTd);
   }
-document.getElementById("table").appendChild(tbl);
-}
+  document.getElementById("table").appendChild(tbl);
+};
 
-// displayTable();
+displayTable();
 
+//--------form----------
 
+var subForm = document.getElementById('submission-form');
 
-var subForm = document.getElementById("submission-form")
+var refresh = function() {
+  var oldTable=document.getElementById('table');
+  var container=oldTable.parentNode;
+  container.removeChild(oldTable);
+  var newDiv = document.createElement('div');
+  newDiv.id= 'table';
+  var divParent = document.getElementById('refresh')
+  divParent.appendChild(newDiv);
+};
 
-// var addedLocation = function() {
-
-
-
-var handleSub = function(event) {
+ var handleSub = function(event) {
   event.preventDefault();
 
     if ((!event.target.storeLoc.value) || (!event.target.min.value) || (!event.target.max.value) || (!event.target.avgCookie.value)) {
       return alert('Fill those fields fool!');
     }
-
     var place = event.target.storeLoc.value;
     var minimum = event.target.min.value;
     var maximum = event.target.max.value;
     var cookies = event.target.avgCookie.value;
     var addLocation = new CookieStand(place,minimum,maximum,cookies);
 
-    allCookieStands.push(addLocation);
+    event.target.storeLoc.value = null;
+    event.target.min.value = null;
+    event.target.max.value = null;
+    event.target.avgCookie.value = null;
+
+    refresh();
     displayTable();
 };
 
 subForm.addEventListener('submit', handleSub);
+
 
