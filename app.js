@@ -31,6 +31,7 @@ var alki = new CookieStand('Alki', 3,24,2.6);
 //-----table-------
 function displayTable() {
   var tbl = document.createElement('table');
+  tbl.id='tbl';
   var headerRow = document.createElement('tr');
 
     for (i = 0; i < hour.length; i++) {
@@ -54,9 +55,9 @@ function displayTable() {
       trElement.appendChild(tdElement2);
     }
 
-  var resultsTd = document.createElement('td');
-  resultsTd.textContent = allCookieStands[i].dailyTotal;
-  trElement.appendChild(resultsTd);
+    var resultsTd = document.createElement('td');
+    resultsTd.textContent = allCookieStands[i].dailyTotal;
+    trElement.appendChild(resultsTd);
   }
   document.getElementById("table").appendChild(tbl);
 };
@@ -68,13 +69,9 @@ displayTable();
 var subForm = document.getElementById('submission-form');
 
 var refresh = function() {
-  var oldTable=document.getElementById('table');
+  var oldTable=document.getElementById('tbl');
   var container=oldTable.parentNode;
   container.removeChild(oldTable);
-  var newDiv = document.createElement('div');
-  newDiv.id= 'table';
-  var divParent = document.getElementById('refresh')
-  divParent.appendChild(newDiv);
 };
 
  var handleSub = function(event) {
