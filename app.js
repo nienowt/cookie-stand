@@ -79,10 +79,14 @@ var refresh = function() {
       return alert('Fill those fields fool!');
     }
     var place = event.target.storeLoc.value;
-    var minimum = event.target.min.value;
-    var maximum = event.target.max.value;
-    var cookies = event.target.avgCookie.value;
+    var minimum = parseInt(event.target.min.value);
+    var maximum = parseInt(event.target.max.value);
+    var cookies = parseInt(event.target.avgCookie.value);
     var addLocation = new CookieStand(place, minimum, maximum, cookies);
+    console.log("locations " + typeof place);
+    console.log("Minimum " + typeof minimum);
+    console.log("maximum " + typeof maximum);
+    console.log("cookies "+ typeof cookies);
 
     event.target.storeLoc.value = null;
     event.target.min.value = null;
