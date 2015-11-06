@@ -1,0 +1,119 @@
+#page {
+  background-color: #F3DBDF;
+
+}
+header {
+  border: 2px;
+  padding:10px;
+  background-color: #baddad;
+}
+
+a{
+  text-decoration: none;
+}
+
+li {
+  list-style:none;
+  }
+
+p {
+  background-color: #feedee;
+  padding:10px;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  display:inline;
+  margin-left: 18%;
+  font-family: 'Josefin Slab', serif;
+  color: #870e28;
+}
+
+h2{
+  text-align: center;
+
+}
+
+h3 {
+  margin-left: 10%;
+  font-style: oblique;
+
+  }
+header h3 {
+  margin-left: 25%;
+}
+
+nav {
+  border-top: solid black 8px;
+  display: inline block;
+  background-color:
+}
+
+nav ul {
+  border-bottom: dotted 1px
+}
+
+nav li {
+  display: inline;
+  margin:10px 25x;
+  margin-left: 65px;
+  padding-left: 30px;
+  font-size:150%;
+  font-style:sans-serif;
+  font:Arial;
+}
+
+figcaption {
+  font-size: 18px;
+  text-align: center;
+}
+
+aside {
+  display: inline-block;
+  padding:25px;
+  padding-bottom: 0px;
+  margin: 0px 25px;
+  border-left:solid 1px;
+  float:right;
+}
+
+ .milk {
+  display: inline-block;
+  margin-left: 8%;
+  margin-right: auto;
+ }
+
+
+ #headfish {
+  height :100px;
+  float:left;
+}
+
+.history {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.merch {
+  display:inline-block;
+  margin-top:0px;
+  border-right: solid 1px;
+}
+
+#top {
+  display: inline;
+}
+
+
+.#history {
+  display:block;
+  margin-left: 0px;
+  margin-left: auto;
+  width: 500px
+}
+
+#bottom {
+  display:block;
+}
