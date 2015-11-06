@@ -1,5 +1,5 @@
 #page {
-  background-color: #F3DBDF;
+  background-color: #fff2f4;
 
 }
 header {
@@ -33,7 +33,6 @@ h1 {
 
 h2{
   text-align: center;
-
 }
 
 h3 {
@@ -65,6 +64,12 @@ nav li {
   font:Arial;
 }
 
+img {
+  max-height: 360px;
+  display:inline;
+
+}
+
 figcaption {
   font-size: 18px;
   text-align: center;
@@ -74,17 +79,28 @@ aside {
   display: inline-block;
   padding:25px;
   padding-bottom: 0px;
-  margin: 0px 25px;
+  margin: 85px 85px;
   border-left:solid 1px;
-  float:right;
+
 }
 
  .milk {
   display: inline-block;
-  margin-left: 8%;
+  margin-left: auto;
   margin-right: auto;
+
  }
 
+.left {
+  display:inline-block;
+  margin-right: 0px;
+  margin-left: 35px;
+}
+
+.right {
+  display:inline-block;
+  margin:0px;
+}
 
  #headfish {
   height :100px;
@@ -98,22 +114,25 @@ aside {
 
 .merch {
   display:inline-block;
-  margin-top:0px;
+  margin-top:250px;
   border-right: solid 1px;
+  float:left;
 }
 
 #top {
-  display: inline;
+  display: inline; /*i don' think this is doing anything*/
 }
 
 
 .#history {
-  display:block;
+  display:inline;
   margin-left: 0px;
   margin-left: auto;
   width: 500px
 }
 
 #bottom {
-  display:block;
+  display:inline; /*i don' think this is doing anything*/
 }
+
+
