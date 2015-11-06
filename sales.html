@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Salmon Cookies</title>
-  <!--link css-->
-  <!--link google font-->
+  <title>Sam's Salmon Cookies</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="layout.css">
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display|Josefin+Slab:700' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<div id='page'>
+  <body class="twelve columns">
+  <header>
+    <h1>Sam's Salmon Cookies</h1>
+    <img src="images/salmon.png" id='headfish'>
+     <div id="internal">
+          <a href="sales.html">Internal/</a><a href="index.html">External</a>
+        </div>
+    <h3>Salmon cookies made with fish, salmon cookies are delish!</h3>
+    </header>
+    <nav>
+      <ul class="twelve columns">
+        <li>Locations:</li>
+        <li>Pike Place Market</li>
+        <li>SeaTac Airport</li>
+        <li>South Center Mall</li>
+        <li>Bellevue Square</li>
+        <li>Alki</li>
+        <li>Hours: 10am - 6pm</li>
+      </ul>
+    </nav>
+  <section class="Table">
   <div id="table"></div>
   <form id = 'submission-form'>
     <fieldset>
@@ -22,6 +44,7 @@
       <button id="sub" button type="submit">Submit</button>
     </fieldset>
     </form>
+    </section>
 <script type="text/javascript" src="app.js"></script>
 </body>
 </html>

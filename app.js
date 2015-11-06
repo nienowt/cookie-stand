@@ -17,8 +17,10 @@ function CookieStand(loc, minCust, maxCust, avgPurch) {
   this.calcHourly = function() {
     for (var i = 0; i<hour.length-2; i++) {  //-2 accounts for extra values in hour array, empty cell and total
     var hourly = Math.floor(this.generateRandom() * this.avgPurch);
+      if (this.hourTotal.length < hour.length-2) {
       this.hourTotal.push(hourly);
       this.dailyTotal += this.hourTotal[i];
+      }
     }
   }
 };
@@ -67,6 +69,7 @@ var refresh = function() {
   var oldTable = document.getElementById('tbl');
   var container = oldTable.parentNode;
   container.removeChild(oldTable);
+  displayTable();
 };
 
  var handleSub = function(event) {
@@ -87,7 +90,6 @@ var refresh = function() {
     event.target.avgCookie.value = null;
 
     refresh();
-    displayTable();
 };
 
 subForm.addEventListener('submit', handleSub);
