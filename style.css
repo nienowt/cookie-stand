@@ -1,0 +1,241 @@
+#page {
+  background-color: #fff2f4;
+}
+
+header {
+  border: 2px;
+  padding:10px;
+  background-color: #baddad;
+}
+
+a {
+  color:#870e28 ;
+  text-decoration: none;
+}
+
+li {
+  list-style:none;
+  font-family: Helvetica;
+  font-size: 1.5em;
+  }
+
+p {
+  background-color: #feedee;
+  font-family: Times;
+  font-size: 1.2em;
+}
+
+h1 {
+  font-family: 'Josefin Slab', serif;
+  color: #870e28;
+}
+
+.content h1 {
+  display:inline;
+  margin-left: 18%;
+}
+
+h2{
+  color:#404040;
+  font-family: Helvetica;
+}
+
+.history h2 {
+  padding-left:38%;
+}
+
+h3 {
+  color:#404040;
+  font-family: Helvetica;
+  }
+
+.merch h3 {
+  margin-left: 10%;
+}
+
+header h3 {
+  margin-left: 25%;
+  font-style: oblique;
+}
+
+nav {
+  border-top: solid black 8px;
+  display: inline block;
+}
+
+nav ul {
+  border-bottom: dotted 1px
+}
+
+nav li {
+  display: inline;
+  margin:10px 25x;
+  margin-left: 65px;
+  padding-left: 30px;
+  font-size:150%;
+  font-style:sans-serif;
+  font:Helvetica;
+}
+
+img {
+  max-height: 360px;
+  display:inline;
+
+}
+
+aside {
+  display: inline-block;
+  padding:25px;
+  padding-bottom: 0px;
+  margin: 85px 85px 10px;
+  border-left:solid 1px;
+}
+
+figcaption {
+  margin-left: 25%;
+}
+
+.milk {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#milky {
+  opacity:1;
+  transition-property: opacity;
+  transition-duration: 2s;
+  transition-timing-function: linear;
+}
+
+#milky:hover {
+  opacity:0;
+}
+
+.left {
+  display:inline-block;
+  margin-right: 0px;
+  margin-left: 35px;
+}
+
+.right {
+  display:inline-block;
+  margin:0px;
+}
+
+ #headfish {
+  height :100px;
+  float:left;
+}
+
+.merch {
+  display:inline-block;
+  margin-top:250px;
+  border-right: solid 1px;
+  float:left;
+}
+
+#submission-form {
+  display: inline-block;
+  margin-left: 25%;
+  }
+
+#table{
+  margin-left: 25%;
+}
+
+
+#internal {
+  float:right;
+  margin: 5px 20px;
+}
+
+#disclaim {
+  background-color: #fff2f4;
+  font-size: 10px;
+  display:inline;
+}
+
+#form {
+  height:100%;
+}
+
+ #snacklord {
+  margin:15% 35% 30%;
+  border: solid black 1px;
+  padding: 4% 0% 2.5% 5%;
+ }
+
+.history {
+  padding:10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*Animation -----based on code from: http://codepen.io/shayhowe/pen/ogJjm*/
+@keyframes slide {
+  0% {
+    left: -20%;
+    top: 100px;
+  }
+
+  100% {
+    left: 50%;
+    top: 100px;
+  }
+}
+
+.stage {
+  position:fixed;
+  background: none;
+  height: 400px;
+  min-width: 100%;
+  background-color:none;
+  overflow:hidden;
+  position: relative;
+}
+
+.stage .bear:target {
+  animation-name: slide;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.bear {
+  height: 400px;
+  position: absolute;
+  width: 150px;
+  display:inline;
+  left: -400px;
+}
+
+/*style guide*/
+#style p {
+  background:none;
+}
+#style h2 {
+  display:inline;
+}
+#style h3 {
+  display: inline;
+}
+#style h4 {
+  font-size:2em;
+}
+#style img {
+  max-width: 200px;
+}
+#style {
+  padding-left:20%;
+}
+#style hr {
+  width: 200px;
+  margin-left: 0px;
+}
+#style img {
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
