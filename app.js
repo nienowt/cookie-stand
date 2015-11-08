@@ -32,11 +32,11 @@ var bellSquare = new CookieStand('Bellevue Square', 20,48,3.3);
 var alki = new CookieStand('Alki', 3,24,2.6);
 //-----table-------
 function displayTable() {
-  var tbl = document.createElement('table');  //move these variables outside into function outside of displayTable
+  var tbl = document.createElement('table');
   tbl.id='tbl';
   var headerRow = document.createElement('tr');
 
-  for (i = 0; i < hour.length; i++) {              //break up into different functions
+  for (i = 0; i < hour.length; i++) {
     var thElement = document.createElement('th');
     thElement.textContent = hour[i];
     headerRow.appendChild(thElement);
@@ -51,7 +51,7 @@ function displayTable() {
     trElement.appendChild(tdElement);
     tbl.appendChild(trElement);
     for  (j = 0; j < hour.length-2; j++) {
-      var tdElement2 = document.createElement('td');           //move into object to add line rather than refresh table
+      var tdElement2 = document.createElement('td');
       tdElement2.textContent = allCookieStands[i].hourTotal[j];
       trElement.appendChild(tdElement2);
     }
@@ -79,31 +79,18 @@ var refresh = function() {
       return alert('Fill those fields fool!');
     }
 
-    var place = (event.target.storeLoc.value).toUpperCase();
+    var place = event.target.storeLoc.value;
     var minimum = parseInt(event.target.min.value);
     var maximum = parseInt(event.target.max.value);
     var cookies = parseInt(event.target.avgCookie.value);
-
-    //why does this almost work for pike place, nothing else
-    for (i = 0; i < allCookieStands.length; i++) {
-      if (place.toUpperCase() === (allCookieStands[i].loc).toUpperCase()) {
-       place = allCookieStands[i].loc
-       allCookieStands[i].minCust = minimum;
-       allCookieStands[i].maxCust = maximum;
-       allCookieStands[i].avgPurch = cookies;
-       console.log(allCookieStands);
-       refresh();
-      } else {
     var addLocation = new CookieStand(place, minimum, maximum, cookies);
     refresh();
-      }
-    }
+
 
     event.target.storeLoc.value = null;
     event.target.min.value = null;
     event.target.max.value = null;
     event.target.avgCookie.value = null;
-
 };
 
 
