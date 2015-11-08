@@ -235,3 +235,7 @@ figcaption {
   width: 200px;
   margin-left: 0px;
 }
+#style img {
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
