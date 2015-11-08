@@ -75,10 +75,11 @@ aside {
   display: inline-block;
   padding:25px;
   padding-bottom: 0px;
-  margin: 85px 85px;
+  margin: 85px 85px 10px;
   border-left:solid 1px;
-
 }
+
+
 
  .milk {
   display: inline-block;
@@ -114,11 +115,6 @@ aside {
   float:left;
 }
 
-.history {
-  margin-right: auto;
-  margin-left: auto;
-}
-
 .merch {
   display:inline-block;
   margin-top:250px;
@@ -130,16 +126,9 @@ aside {
   display: inline; /*i don' think this is doing anything*/
 }
 
-
-.#history {
-  display:inline;
-  margin-left: 0px;
-  margin-left: auto;
-  width: 500px
-}
-
 #bottom {
   display:inline; /*i don' think this is doing anything*/
+
 }
 
 #submission-form {
@@ -157,76 +146,59 @@ aside {
   margin: 5px 20px;
 }
 
+#disclaim {
+  background-color: #fff2f4;
+  font-size: 10px;
+  display:inline;
+}
+
+
+
+
 
 /*Animation*/
-@import url(http://fonts.googleapis.com/css?family=Montserrat:700);
-
-
-.exampleDiv {
-  float: left;
-  margin: 20px;
-  text-align: center;
-  position: relative;
-  background-color: #ffffff;
-  border-radius: 4px;
-}
-
-.ball {
-  position: absolute;
-  width: 900px;
-  height: 300px;
-  background-image: url(images/salmon.png);
-}
-
-@-webkit-keyframes bouncing {
-  40%, 70%, 90% {
-    bottom: 0;
-    -webkit-animation-timing-function: ease-out;
-  }
+@keyframes slide {
   0% {
-    bottom: 200px;
-    left: 0;
-    -webkit-animation-timing-function: ease-in;
+    left: -20%;
+    top: 100px;
   }
-  55% {
-    bottom: 50px;
-    -webkit-animation-timing-function: ease-in;
-  }
-  80% {
-    bottom: 25px;
-    -webkit-animation-timing-function: ease-in;
-  }
-  95% {
-    bottom: 10px;
-    -webkit-animation-timing-function: ease-out;
-  }
+/*  50% {
+    left: 25%;
+    top: 100px;
+  }*/
   100% {
-    bottom: 0;
-    -webkit-animation-timing-function: ease-out;
+    left: 50%;
+    top: 100px;
   }
-  @-moz-keyframes bouncing {
-    40%, 70%, 90% {
-      bottom: 0;
-      -webkit-animation-timing-function: ease-out;
-    }
-    0% {
-      bottom: 200px;
-      left: 0;
-      -webkit-animation-timing-function: ease-in;
-    }
-    55% {
-      bottom: 50px;
-      -webkit-animation-timing-function: ease-in;
-    }
-    80% {
-      bottom: 25px;
-      -webkit-animation-timing-function: ease-in;
-    }
-    95% {
-      bottom: 10px;
-      -webkit-animation-timing-function: ease-out;
-    }
-    100% {
-      bottom: 0;
-      -webkit-animation-timing-function: ease-out;
-    }
+}
+
+.stage {
+  position:fixed;
+  background: none;
+  height: 400px;
+  min-width: 100%;
+  background-color:none;
+  overflow:hidden;
+  position: relative;
+
+
+}
+
+.stage .bear:target {
+  animation-name: slide;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.bear {
+  height: 400px;
+  position: absolute;
+  width: 150px;
+  display:inline;
+  left: -400px;
+}
+
+

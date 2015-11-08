@@ -78,23 +78,34 @@ var refresh = function() {
     if ((!event.target.storeLoc.value) || (!event.target.min.value) || (!event.target.max.value) || (!event.target.avgCookie.value)) {
       return alert('Fill those fields fool!');
     }
-    var place = event.target.storeLoc.value;
+
+    var place = (event.target.storeLoc.value).toUpperCase();
     var minimum = parseInt(event.target.min.value);
     var maximum = parseInt(event.target.max.value);
     var cookies = parseInt(event.target.avgCookie.value);
+
+    //why does this almost work for pike place, nothing else
+    for (i = 0; i < allCookieStands.length; i++) {
+      if (place.toUpperCase() === (allCookieStands[i].loc).toUpperCase()) {
+       place = allCookieStands[i].loc
+       allCookieStands[i].minCust = minimum;
+       allCookieStands[i].maxCust = maximum;
+       allCookieStands[i].avgPurch = cookies;
+       console.log(allCookieStands);
+       refresh();
+      } else {
     var addLocation = new CookieStand(place, minimum, maximum, cookies);
-    console.log("locations " + typeof place);
-    console.log("Minimum " + typeof minimum);
-    console.log("maximum " + typeof maximum);
-    console.log("cookies "+ typeof cookies);
+    refresh();
+      }
+    }
 
     event.target.storeLoc.value = null;
     event.target.min.value = null;
     event.target.max.value = null;
     event.target.avgCookie.value = null;
 
-    refresh();
 };
+
 
 subForm.addEventListener('submit', handleSub);
 
